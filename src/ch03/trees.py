@@ -50,6 +50,7 @@ def split_dataset(dataSet, axis, value):
 
 
 def choose_best(dataSet):
+    # uniqueValis代表矩阵宽度，刻意这么理解
     numFeatures = len(dataSet[0]) - 1
     baseEntropy = calc_shannon_ent(dataSet)
     bestInfoGain = 0.0
@@ -57,7 +58,9 @@ def choose_best(dataSet):
 
     # 创建唯一分类标签
     for i in range(numFeatures):
+        # featList代表每一个i的矩阵数列值
         featList = [example[i] for example in dataSet]
+        # 独一无二的
         uniqueValis = set(featList)
         newEntropy = 0.0
 

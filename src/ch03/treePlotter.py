@@ -22,7 +22,7 @@ def plot_node(nodetxt, centerpt, parentpt, nodetype):
 # 获取叶子节点的数目
 def get_num_leafs(mytree):
     numleafs = 0
-    firststr = mytree.keys()[0]
+    firststr = list(mytree.keys())[0]
     seconddict = mytree[firststr]
 
     # 测试节点数据是否为字典
@@ -37,7 +37,7 @@ def get_num_leafs(mytree):
 # 获取决策树的层数
 def get_tree_depth(mytree):
     maxdepth = 0
-    firststr = mytree.keys()[0]
+    firststr = list(mytree.keys())[0]
     seconddict = mytree[firststr]
 
     # 测试数据是否为字典
@@ -71,7 +71,7 @@ def plot_tree(mytree, parentpt, nodetxt):
     # 计算树的宽和高
     numleafs = get_num_leafs(mytree)
     depth = get_tree_depth(mytree)
-    firststr = mytree.keys()[0]
+    firststr = list(mytree.keys())[0]
     cntrpt = (plot_tree.xoff + (1.0 + float(numleafs)) / 2.0 / plot_tree.totalw, plot_tree.yoff)
     plot_mid_text(cntrpt, parentpt, nodetxt)
     plot_node(firststr, cntrpt, parentpt, decisionnode)

@@ -116,7 +116,7 @@ def create_tree(dataSet, labels):
 
 
 def classify(inputtree, featlabels, testvec):
-    firststr = inputtree.keys()[0]
+    firststr = list(inputtree.keys())[0]
     seconddict = inputtree[firststr]
     featindex = featlabels.index(firststr)
     key = testvec[featindex]

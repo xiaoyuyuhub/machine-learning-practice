@@ -129,12 +129,12 @@ def classify(inputtree, featlabels, testvec):
 
 
 def store_tree(inputtree, filename):
-    fw = open(filename, 'w')
+    fw = open(filename, 'wb')
     pickle.dump(inputtree, fw)
     fw.close()
 
 
 def grab_tree(filename):
     import pickle
-    fr = open(filename)
+    fr = open(filename, 'rb')
     return pickle.load(fr)

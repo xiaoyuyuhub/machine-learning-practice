@@ -28,13 +28,13 @@ def load_data_set():
 def create_vocab_list(data_set):
 
     # 创建一个空集
-    vocab_set = set([])
+    vocabset = set([])
 
     for document in data_set:
-        vocabset = vocab_set | set(document)
+        vocabset = vocabset | set(document)
 
     # 创建两个集合的并集
-    return list(vocab_set)
+    return list(vocabset)
 
 
 # 输入参数是一个文档，输出的是文档向量
@@ -107,7 +107,7 @@ def test():
     train_matrix = []
 
     for post_in_doc in list_of_posts:
-        train_matrix.append(set_of_word_vec((my_vocal_list, post_in_doc)))
+        train_matrix.append(set_of_word_vec(my_vocal_list, post_in_doc))
 
     p0_vec, p1_vec, p_abusive = train(array(train_matrix), array(list_classes))
 
@@ -146,7 +146,7 @@ def spam_text():
         class_list.append(0)
 
     vocab_list = create_vocab_list(doc_list)
-    train_set = range(50)
+    train_set = list(range(50))
     test_set = []
 
     # 随机构建训练集
@@ -160,7 +160,7 @@ def spam_text():
 
     # 对测试集合进行分类
     for doc_index in train_set:
-        train_matrix.append(bag_of_word_vec((vocab_list, doc_list[doc_index])))
+        train_matrix.append(bag_of_word_vec(vocab_list, doc_list[doc_index]))
         train_class.append(class_list[doc_index])
         p0_vec, p1_vec, p_spam = train(array(train_matrix), array(train_class))
         error_count = 0

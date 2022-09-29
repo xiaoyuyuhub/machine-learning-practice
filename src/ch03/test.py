@@ -2,6 +2,8 @@ import trees
 import treePlotter
 
 myDat, labels = trees.create_dataset()
+
+trees.create_tree(myDat,labels);
 print(myDat)
 
 # tree=trees.create_tree(myDat,labels)

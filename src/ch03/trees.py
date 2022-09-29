@@ -52,6 +52,7 @@ def split_dataset(dataSet, axis, value):
 def choose_best(dataSet):
     # uniqueValis代表矩阵宽度，刻意这么理解
     numFeatures = len(dataSet[0]) - 1
+    # 首先建立总的嫡
     baseEntropy = calc_shannon_ent(dataSet)
     bestInfoGain = 0.0
     bestFeature = -1
@@ -66,6 +67,7 @@ def choose_best(dataSet):
 
         # 计划每种划分的信息墒
         for value in uniqueValis:
+            # i代表第几行，value代表值，返回满足这个条件剩余的变量
             subDataSet = split_dataset(dataSet, i ,value)
             prob = len(subDataSet)/float(len(dataSet))
             newEntropy += prob * calc_shannon_ent(subDataSet)

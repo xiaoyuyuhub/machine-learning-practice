@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from numpy import *
 import math
 from numpy.ma import array
+import numpy as np
 
 
 # 加载数据
@@ -26,7 +27,7 @@ def load_data_set():
 
 def sigmoid(X):
 
-    return (1.0 / (1+math.exp(-X))) + 1e-8
+    return (1.0 / (1+np.exp(-X))) + 1e-8
 
 
 # Logistic回归梯度上升优化算法
@@ -37,7 +38,9 @@ def grad_ascent(data_matrix, class_label):
     label_matrix = mat(class_label).transpose()
     m, n = shape(data_matrix)
 
+    # 步长
     alpha = 0.01
+    # 迭代次数
     max_cycles = 500
     weights = ones((n, 1))
 
@@ -45,6 +48,7 @@ def grad_ascent(data_matrix, class_label):
     for k in range(max_cycles):
         h = sigmoid(data_matrix*weights)
         error = (label_matrix - h)
+        # data_matrix.transpose()矩阵转置
         weights = weights + alpha * data_matrix.transpose() * error
 
     return weights

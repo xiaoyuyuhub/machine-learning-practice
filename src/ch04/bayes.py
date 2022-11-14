@@ -43,6 +43,7 @@ def set_of_word_vec(vocab_list, input_set):
     # 创建一个所含向量都为0的向量
     vec = [0] * len(vocab_list)
 
+    # 如果同一列有2个相同的词
     for word in input_set:
         if word in vocab_list:
             vec[vocab_list.index(word)] = 1
